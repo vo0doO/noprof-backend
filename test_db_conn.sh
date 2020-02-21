@@ -1,0 +1,1 @@
+psql "host=c-c9q88j8qljtno19phvpv.rw.mdb.yandexcloud.net port=6432 sslmode=verify-full dbname=db1 user=user"

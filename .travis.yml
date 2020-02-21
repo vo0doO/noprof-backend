@@ -31,7 +31,8 @@ after_script:
   - docker images
 
 deploy:
+  # FIXME(vo0doo): replace address to docker image
   provider: script
-  script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && docker tag bakerydemo_app wagtail/bakerydemo:latest && docker tag bakerydemo_app wagtail/bakerydemo:release-$(git rev-parse --short ${TRAVIS_COMMIT}) && docker push wagtail/bakerydemo
+  script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && docker tag portfolio_app wagtail/portfolio:latest && docker tag portfolio_app wagtail/portfolio:release-$(git rev-parse --short ${TRAVIS_COMMIT}) && docker push wagtail/portfolio
   on:
     branch: master

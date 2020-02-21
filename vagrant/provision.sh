@@ -29,23 +29,19 @@ su - $DEV_USER -c "cd $PROJECT_DIR && $PIP install -r requirements/base.txt"
 chmod a+x $PROJECT_DIR/manage.py
 
 # copy local settings file
-cp $PROJECT_DIR/bakerydemo/settings/local.py.example $PROJECT_DIR/bakerydemo/settings/local.py
+#cp $PROJECT_DIR/portfolio/settings/local.py.example $PROJECT_DIR/portfolio/settings/local.py
 # add .env file for django-dotenv environment variable definitions
-echo DJANGO_SETTINGS_MODULE=$PROJECT_NAME.settings.local > $PROJECT_DIR/.env
+#echo DJANGO_SETTINGS_MODULE=$PROJECT_NAME.settings.local > $PROJECT_DIR/.env
 
-if [ -n "$USE_POSTGRESQL" ]
-then
-    su - $DEV_USER -c "createdb $PROJECT_NAME"
-    su - $DEV_USER -c "$PIP install \"psycopg2-binary>=2.7,<3\""
-    cat << EOF >> $PROJECT_DIR/bakerydemo/settings/local.py
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '$PROJECT_NAME',
-    }
+su - $DEV_USER -c "$PIP install \"psycopg2-binary>=2.7,<3\""
+
+function install_db_cert() {
+  mkdir -p ~/.postgresql && \
+  wget "https://storage.yandexcloud.net/cloud-certs/CA.pem" -O ~/.postgresql/root.crt && \
+  chmod 0600 ~/.postgresql/root.crt
 }
-EOF
-fi
+
+install_db_cert
 
 # Run syncdb/migrate/load_initial_data/update_index
 su - $DEV_USER -c "$PYTHON $PROJECT_DIR/manage.py migrate --noinput && \
@@ -56,6 +52,7 @@ su - $DEV_USER -c "$PYTHON $PROJECT_DIR/manage.py migrate --noinput && \
 # Add a couple of aliases to manage.py into .bashrc
 cat << EOF >> /home/$DEV_USER/.bashrc
 export PYTHONPATH=$PROJECT_DIR
+exprort SECRET_KEY='c6u0-9c!7nilj_ysatsda0(f@e_2mws2f!6m0n^o*4#*q#kzp)'
 
 alias dj="$PROJECT_DIR/manage.py"
 alias djrun="dj runserver 0.0.0.0:8000"

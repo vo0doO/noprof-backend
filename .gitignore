@@ -9,8 +9,8 @@
 /data
 .~*
 common/CACHE
-bakerydemo/settings/local.py
-bakerydemodb
+portfolio/settings/local.py
+portfoliodb
 __pycache__
 .vagrant/
 /.vagrant/

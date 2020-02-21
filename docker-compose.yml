@@ -30,7 +30,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     volumes:
-      - media-root:/code/bakerydemo/media
+      - media-root:/code/portfolio/media
     links:
       - db:db
       - redis:redis

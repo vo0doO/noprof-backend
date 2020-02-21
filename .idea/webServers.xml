@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="75d85054-60d4-4fb9-9bbe-d70bf1b5a1ac" name="noprof" url="http://127.0.0.1">
+        <fileTransfer host="127.0.0.1" port="2222" privateKey="$USER_HOME$/.vagrant.d/boxes/torchbox-VAGRANTSLASH-wagtail-stretch64/1.0.0/virtualbox/vagrant_private_key" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="2222" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

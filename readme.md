@@ -50,8 +50,8 @@ Setup with Vagrant
 Once you've installed the necessary dependencies run the following commands:
 
 ```bash
-git clone https://github.com/wagtail/bakerydemo.git
-cd bakerydemo
+git clone https://github.com/wagtail/portfolio.git
+cd portfolio
 vagrant up
 vagrant ssh
 # then, within the SSH session:
@@ -76,8 +76,8 @@ Setup with Docker
 Run the following commands:
 
 ```bash
-git clone https://github.com/wagtail/bakerydemo.git
-cd bakerydemo
+git clone https://github.com/wagtail/portfolio.git
+cd portfolio
 docker-compose up --build -d
 docker-compose run app /venv/bin/python manage.py load_initial_data
 docker-compose up
@@ -111,28 +111,28 @@ You can run the Wagtail demo locally without setting up Vagrant or Docker and si
 With [PIP](https://github.com/pypa/pip) and [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)
 installed, run:
 
-    mkvirtualenv wagtailbakerydemo
+    mkvirtualenv wagtailportfolio
     python --version
 
 Confirm that this is showing a compatible version of Python 3.x. If not, and you have multiple versions of Python installed on your system, you may need to specify the appropriate version when creating the virtualenv:
 
     deactivate
-    rmvirtualenv wagtailbakerydemo
-    mkvirtualenv wagtailbakerydemo --python=python3.6
+    rmvirtualenv wagtailportfolio
+    mkvirtualenv wagtailportfolio --python=python3.6
     python --version
 
 Now we're ready to set up the bakery demo project itself:
 
     cd ~/dev [or your preferred dev directory]
-    git clone https://github.com/wagtail/bakerydemo.git
-    cd bakerydemo
+    git clone https://github.com/wagtail/portfolio.git
+    cd portfolio
     pip install -r requirements/base.txt
 
 Next, we'll set up our local environment variables. We use [django-dotenv](https://github.com/jpadilla/django-dotenv)
 to help with this. It reads environment variables located in a file name `.env` in the top level directory of the project. The only variable we need to start is `DJANGO_SETTINGS_MODULE`:
 
-    $ cp bakerydemo/settings/local.py.example bakerydemo/settings/local.py
-    $ echo "DJANGO_SETTINGS_MODULE=bakerydemo.settings.local" > .env
+    $ cp portfolio/settings/local.py.example portfolio/settings/local.py
+    $ echo "DJANGO_SETTINGS_MODULE=portfolio.settings.local" > .env
 
 To set up your database and load initial data, run the following commands:
 
@@ -148,7 +148,7 @@ Deploy to Heroku
 If you don't want to test locally you can deploy a demo site to a publicly accessible server with [Heroku's](https://heroku.com)
 one-click deployment solution to their free 'Hobby' tier:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/wagtail/bakerydemo)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/wagtail/portfolio)
 
 If you do not have a Heroku account, clicking the above button will walk you through the steps
 to generate one.  At this point you will be presented with a screen to configure your app. For our purposes,
@@ -198,17 +198,17 @@ Hopefully after you've experimented with the demo you'll want to create your own
 
 # Contributing
 
-If you're a Python or Django developer, fork the repo and get stuck in! If you'd like to get involved you may find our [contributing guidelines](https://github.com/wagtail/bakerydemo/blob/master/contributing.md) a useful read.
+If you're a Python or Django developer, fork the repo and get stuck in! If you'd like to get involved you may find our [contributing guidelines](https://github.com/wagtail/portfolio/blob/master/contributing.md) a useful read.
 
 ### Preparing this archive for distribution
 
 If you change content or images in this repo and need to prepare a new fixture file for export, do the following on a branch:
 
-`./manage.py dumpdata --natural-foreign --indent 2 -e auth.permission -e contenttypes -e wagtailcore.GroupCollectionPermission -e wagtailimages.filter -e wagtailcore.pagerevision -e wagtailimages.rendition  -e sessions > bakerydemo/base/fixtures/bakerydemo.json`
+`./manage.py dumpdata --natural-foreign --indent 2 -e auth.permission -e contenttypes -e wagtailcore.GroupCollectionPermission -e wagtailimages.filter -e wagtailcore.pagerevision -e wagtailimages.rendition  -e sessions > portfolio/base/fixtures/portfolio.json`
 
 Please optimize any included images to 1200px wide with JPEG compression at 60%. Note that `media/images` is ignored in the repo by `.gitignore` but `media/original_images` is not. Wagtail's local image "renditions" are excluded in the fixture recipe above.
 
-Make a pull request to https://github.com/wagtail/bakerydemo
+Make a pull request to https://github.com/wagtail/portfolio
 
 # Other notes
 
