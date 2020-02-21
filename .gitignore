@@ -16,3 +16,9 @@ __pycache__
 /.vagrant/
 /Vagrantfile.local
 !.gitignore
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/portfolio.iml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
