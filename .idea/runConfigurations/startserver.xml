@@ -13,7 +13,7 @@
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <option name="launchJavascriptDebuger" value="true" />
     <option name="port" value="8000" />
-    <option name="host" value="0.0.0.0" />
+    <option name="host" value="192.168.1.203" />
     <option name="additionalOptions" value="" />
     <option name="browserUrl" value="http://192.168.1.203:8000/" />
     <option name="runTestServer" value="false" />
