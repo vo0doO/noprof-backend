@@ -1,237 +1,237 @@
-Wagtail demo project
+Демонстрационный проект трясогузки
 =======================
 
-This is a demonstration project for the amazing [Wagtail CMS](https://github.com/wagtail/wagtail).
+Это демонстрационный проект для удивительной [Wagtail CMS](https://github.com/wagtail/wagtail).
 
-The demo site is designed to provide examples of common features and recipes to introduce you to Wagtail development. Beyond the code, it will also let you explore the admin / editorial interface of the CMS.
+Демонстрационный сайт предназначен для предоставления примеров общих особенностей и рецептов, чтобы познакомить вас с разработкой трясогузки. Помимо кода, он также позволит вам изучить интерфейс администрирования / редактирования CMS.
 
-Note we do _not_ recommend using this project to start your own site - the demo is intended to be a springboard to get you started. Feel free to copy code from the demo into your own project.
+Примечание. мы не рекомендуем использовать этот проект для запуска собственного сайта-демонстрация предназначена для того, чтобы стать трамплином для начала работы. Не стесняйтесь копировать код из демо-версии в свой собственный проект.
 
-### Wagtail Features Demonstrated in This Demo
+### Особенности трясогузки, продемонстрированные в этой демонстрации
 
-This demo is aimed primarily at developers wanting to learn more about the internals of Wagtail, and assumes you'll be reading its source code. After browsing the features, pay special attention to code we've used for:
+Эта демонстрация предназначена в первую очередь для разработчиков, желающих узнать больше о внутренних частях Wagtail, и предполагает, что вы будете читать его исходный код. После просмотра функций обратите особое внимание на код, который мы использовали для:
 
--   Dividing a project up into multiple apps
--   Custom content models and "contexts" in the "breads" and "locations" apps
--   A typical weblog in the "blog" app
--   Example of using a "base" app to contain misc additional functionality (e.g. Contact Form, About, etc.)
--   "StandardPage" model using mixins borrowed from other apps
--   Example of customizing the Wagtail Admin via _wagtail_hooks_
--   Example of using the Wagtail "snippets" system to represent bread categories, countries and ingredients
--   Example of a custom "Galleries" feature that pulls in images used in other content types in the system
--   Example of creating ManyToMany relationships via the Ingredients feature on BreadPage
--   Lots more
+- Разделение проекта на несколько приложений
+- Пользовательские модели контента и "контексты" в приложениях "хлеб" и "местоположения"
+- Типичный веб-блог в приложении "блог" 
+- Пример использования" базового " приложения, содержащего разные дополнительные функции (например, контактную форму, информацию и т. д.)
+- Модель "StandardPage" с использованием миксинов, заимствованных из других приложений
+- Пример настройки администратора Wagtail через _wagtail_hooks_
+- Пример использования системы Wagtail "snippets" для представления категорий хлеба, стран и ингредиентов
+- Пример пользовательской функции "галереи", которая вытягивает изображения, используемые в других типах контента в системе
+- Пример создания множества отношений с помощью функции Ингредиенты на странице хлеб
+- Намного больше
 
-**Document contents**
+** Содержание документа**
 
-- [Installation](#installation)
-- [Next steps](#next-steps)
-- [Contributing](#contributing)
-- [Other notes](#other-notes)
+- [Установка](#Установка)
+- [Следующие шаги](#next-steps)
+- [Вклад](#вклад)
+- [Другие заметки](#другие заметки)
 
-# Installation
+# Установка
 
-- [Vagrant](#setup-with-vagrant)
+- [Бродяга](#setup-with-vagrant)
 - [Docker](#setup-with-docker)
 - [Virtualenv](#setup-with-virtualenv)
 - [Heroku](#deploy-to-heroku)
 
-If you're new to Python and/or Django, we suggest you run this project on a Virtual Machine using Vagrant or Docker (whichever you're most comfortable with). Both Vagrant and Docker will help resolve common software dependency issues. Developers more familiar with
-virtualenv and traditional Django app setup instructions should skip to [Setup with virtualenv](#setup-with-virtualenv).
+Если вы новичок в Python и / или Django, мы предлагаем вам запустить этот проект на виртуальной машине с помощью Vagrant или Docker (в зависимости от того, что вам удобнее). И Vagrant, и Docker помогут решить распространенные проблемы зависимости программного обеспечения. Разработчиков, знакомых с
+virtualenv и традиционные инструкции по настройке приложения Django должны перейти к [Setup with virtualenv] (#setup-with-virtualenv).
 
-Setup with Vagrant
+Установка с Бродягой
 ------------------
 
-#### Dependencies
-* [Vagrant](https://www.vagrantup.com/)
-* [Virtualbox](https://www.virtualbox.org/)
+#### Зависимости
+* [Бродяга](https://www.vagrantup.com/)
+* [Мужской голос](https://www.virtualbox.org/)
 
-#### Installation
-Once you've installed the necessary dependencies run the following commands:
+#### Установка
+После установки необходимых зависимостей выполните следующие команды:
 
-```bash
-git clone https://github.com/wagtail/portfolio.git
-cd portfolio
-vagrant up
-vagrant ssh
-# then, within the SSH session:
-./manage.py runserver 0.0.0.0:8000
-```
+```удар
+клон git https://github.com/wagtail/portfolio.git
+компакт-портфель
+бродяга вверх
+бродяга ssh
+# затем, в течение сеанса SSH:
+./manage.py runserver 0.0.0.0: 8000
+``
 
-The demo site will now be accessible at [http://localhost:8000/](http://localhost:8000/) and the Wagtail admin
-interface at [http://localhost:8000/admin/](http://localhost:8000/admin/).
+Демо-сайт теперь будет доступен по адресу [http://localhost:8000/](http://localhost:8000/) и трясогузка админ
+интерфейс на [http://localhost:8000/admin/](http://localhost:8000/admin/).
 
-Log into the admin with the credentials ``admin / changeme``.
+Войдите в режим администрирования с полномочиями `администратора / changeme`.
 
-Use `Ctrl+c` to stop the local server. To stop the Vagrant environment, run `exit` then `vagrant halt`.
+Используйте "Ctrl+c", чтобы остановить локальный сервер. Чтобы остановить бродячую среду, выполните команду "выход", а затем "остановка бродяги".
 
-Setup with Docker
+Настройки с Настройки
 -----------------
 
-#### Dependencies
-* [Docker](https://docs.docker.com/engine/installation/)
-* [Docker Compose](https://docs.docker.com/compose/install/)
+#### Зависимости
+* [Докер](https://docs.docker.com/engine/installation/)
+* [Докер сочинять](https://docs.docker.com/compose/install/)
 
-### Installation
-Run the following commands:
+### Установка
+Выполните следующие команды:
 
-```bash
-git clone https://github.com/wagtail/portfolio.git
-cd portfolio
-docker-compose up --build -d
-docker-compose run app /venv/bin/python manage.py load_initial_data
-docker-compose up
-```
+```удар
+клон git https://github.com/wagtail/portfolio.git
+компакт-портфель
+docker-compose up-build-d
+docker-compose run app / venv / bin / python manage.py load_initial_data
+докер-сочиняй
+``
 
-The demo site will now be accessible at [http://localhost:8000/](http://localhost:8000/) and the Wagtail admin
-interface at [http://localhost:8000/admin/](http://localhost:8000/admin/).
+Демо-сайт теперь будет доступен по адресу [http://localhost:8000/](http://localhost:8000/) и трясогузка админ
+интерфейс на [http://localhost:8000/admin/](http://localhost:8000/admin/).
 
-Log into the admin with the credentials ``admin / changeme``.
+Войдите в режим администрирования с полномочиями `администратора / changeme`.
 
-**Important:** This `docker-compose.yml` is configured for local testing only, and is _not_ intended for production use.
+** Важно: * * этот ' докер-сочиняй.yml ' настроен только для локального тестирования и не предназначен для производственного использования.
 
-### Debugging
-To tail the logs from the Docker containers in realtime, run:
+### Отладка
+Чтобы отслеживать журналы из контейнеров Docker в реальном времени, выполните:
 
-```bash
-docker-compose logs -f
-```
+```удар
+docker-составление журналов-f
+``
 
-Setup with Virtualenv
+Настройка с помощью Virtualenv
 ---------------------
-You can run the Wagtail demo locally without setting up Vagrant or Docker and simply use Virtualenv, which is the [recommended installation approach](https://docs.djangoproject.com/en/1.10/topics/install/#install-the-django-code) for Django itself.
+Вы можете запустить демонстрационную версию Wagtail локально без настройки Vagrant или Docker и просто использовать Virtualenv, что является [рекомендуемым подходом к установке](https://docs.djangoproject.com/en/1.10/topics/install/#install-the-django-code) для самого Джанго.
 
-#### Dependencies
-* Python 3.4, 3.5 or 3.6
-* [Virtualenv](https://virtualenv.pypa.io/en/stable/installation/)
-* [VirtualenvWrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) (optional)
+#### Зависимости
+* Python 3.4, 3.5 или 3.6
+* [О virtualenv](https://virtualenv.pypa.io/en/stable/installation/)
+* [VirtualenvWrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) (необязательно)
 
-### Installation
+### Установка
 
-With [PIP](https://github.com/pypa/pip) and [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)
-installed, run:
+С [Пипом](https://github.com/pypa/pip) и [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)
+установлен, запущен:
 
     mkvirtualenv wagtailportfolio
-    python --version
+    версия Python
 
-Confirm that this is showing a compatible version of Python 3.x. If not, and you have multiple versions of Python installed on your system, you may need to specify the appropriate version when creating the virtualenv:
+Убедитесь, что это показывает совместимую версию Python 3.x. если нет, и у вас есть несколько версий Python, установленных в вашей системе, вам может потребоваться указать соответствующую версию при создании virtualenv:
 
-    deactivate
+    дезактивировать
     rmvirtualenv wagtailportfolio
-    mkvirtualenv wagtailportfolio --python=python3.6
-    python --version
+    mkvirtualenv wagtailportfolio -- python=python3. 6
+    версия Python
 
-Now we're ready to set up the bakery demo project itself:
+Теперь мы готовы создать демонстрационный проект пекарни.:
 
-    cd ~/dev [or your preferred dev directory]
-    git clone https://github.com/wagtail/portfolio.git
-    cd portfolio
-    pip install -r requirements/base.txt
+    cd ~ / dev [или ваш предпочтительный каталог dev]
+    клон git https://github.com/wagtail/portfolio.git
+    компакт-портфель
+    pip install-r требования / база.формат txt
 
-Next, we'll set up our local environment variables. We use [django-dotenv](https://github.com/jpadilla/django-dotenv)
-to help with this. It reads environment variables located in a file name `.env` in the top level directory of the project. The only variable we need to start is `DJANGO_SETTINGS_MODULE`:
+Далее мы настроим наши локальные переменные окружения. Мы используем [django-dotenv](https://github.com/jpadilla/django-dotenv)
+чтобы помочь в этом. Он считывает переменные окружения, расположенные в имени файла `.env ' в директории верхнего уровня проекта. Единственная переменная, которую нам нужно запустить - это ' DJANGO_SETTINGS_MODULE`:
 
-    $ cp portfolio/settings/local.py.example portfolio/settings/local.py
-    $ echo "DJANGO_SETTINGS_MODULE=portfolio.settings.local" > .env
+    $ CP portfolio / settings / local.py. example portfolio/settings/local.py
+    $ echo " DJANGO_SETTINGS_MODULE=портфель.настройки.местный" > .ОКР
 
-To set up your database and load initial data, run the following commands:
+Чтобы настроить базу данных и загрузить исходные данные, выполните следующие команды:
 
-    ./manage.py migrate
+    ./manage.py мигрировать
     ./manage.py load_initial_data
     ./manage.py runserver
 
-Log into the admin with the credentials ``admin / changeme``.
+Войдите в режим администрирования с полномочиями `администратора / changeme`.
 
-Deploy to Heroku
+Развертывание на Heroku
 ----------------
 
-If you don't want to test locally you can deploy a demo site to a publicly accessible server with [Heroku's](https://heroku.com)
-one-click deployment solution to their free 'Hobby' tier:
+Если вы не хотите тестировать локально, вы можете развернуть демонстрационный сайт на общедоступном сервере с помощью [Heroku](https://heroku.com)
+решение для развертывания в один клик на их бесплатном уровне "хобби":
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/wagtail/portfolio)
 
-If you do not have a Heroku account, clicking the above button will walk you through the steps
-to generate one.  At this point you will be presented with a screen to configure your app. For our purposes,
-we will accept all of the defaults and click `Deploy`.  The status of the deployment will dynamically
-update in the browser. Once finished, click `View` to see the public site.
+Если у вас нет учетной записи Heroku, нажав на кнопку выше, вы пройдете через следующие шаги
+чтобы создать его.  На этом этапе вам будет представлен экран для настройки вашего приложения. Для наших целей,
+мы примем все значения по умолчанию и нажмем кнопку "развернуть".  Состояние развертывания будет динамически изменяться.
+обновление в браузере. После завершения нажмите кнопку "Просмотр", чтобы увидеть общедоступный сайт.
 
-Log into the admin with the credentials ``admin / changeme``.
+Войдите в режим администрирования с полномочиями `администратора / changeme`.
 
-To prevent the demo site from regenerating a new Django `SECRET_KEY` each time Heroku restarts your site, you should set
-a `DJANGO_SECRET_KEY` environment variable in Heroku using the web interace or the [CLI](https://devcenter.heroku.com/articles/heroku-cli). If using the CLI, you can set a `SECRET_KEY` like so:
+Чтобы демо-сайт не восстанавливал новый Django " SECRET_KEY` каждый раз, когда Heroku перезапускает ваш сайт, вы должны установить
+переменная окружения 'DJANGO_SECRET_KEY` в Heroku, использующая веб-интерфейс или [CLI](https://devcenter.heroku.com/articles/heroku-cli). при использовании CLI, вы можете установить "SECRET_KEY", как так:
 
-    heroku config:set DJANGO_SECRET_KEY=changeme
+    Heroku config: set DJANGO_SECRET_KEY=changeme
 
-To learn more about Heroku, read [Deploying Python and Django Apps on Heroku](https://devcenter.heroku.com/articles/deploying-python).
+Чтобы узнать больше о Heroku, прочитайте [развертывание приложений Python и Django на Heroku](https://devcenter.heroku.com/articles/deploying-python).
 
-### Storing Wagtail Media Files on AWS S3
+### Хранение медиафайлов Wagtail на AWS S3
 
-If you have deployed the demo site to Heroku or via Docker, you may want to perform some additional setup.  Heroku uses an
-[ephemeral filesystem](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem), and Docker-based hosting
-environments typically work in the same manner.  In laymen's terms, this means that uploaded images will disappear at a
-minimum of once per day, and on each application deployment. To mitigate this, you can host your media on S3.
+Если вы развернули демонстрационный сайт на Heroku или через Docker, возможно, потребуется выполнить дополнительную настройку.  Хероку использует
+[эфемерная файловая система](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem), и хостинг на базе Docker
+среды обычно работают таким же образом.  С точки зрения непрофессионалов, это означает, что загруженные изображения исчезнут в
+минимум один раз в день и при каждом развертывании приложения. Чтобы смягчить это, вы можете разместить свой носитель на S3.
 
-This documentation assumes that you have an AWS account, an IAM user, and a properly configured S3 bucket. These topics
-are outside of the scope of this documentation; the following [blog post](https://wagtail.io/blog/amazon-s3-for-media-files/)
-will walk you through those steps.
+В этой документации предполагается, что у вас есть учетная запись AWS, пользователь IAM и правильно настроенная корзина S3. Эта тема
+выходят за рамки данной документации; следующее [сообщение в блоге](https://wagtail.io/blog/amazon-s3-for-media-files/)
+я проведу вас по этим ступеням.
 
-This demo site comes preconfigured with a production settings file that will enable S3 for uploaded media storage if
-``AWS_STORAGE_BUCKET_NAME`` is defined in the shell environment. All you need to do is set the following environment
-variables. If using Heroku, you will first need to install and configure the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli). Then, execute the following commands to set the aforementioned environment variables:
+Этот демонстрационный сайт поставляется с предварительно настроенным файлом производственных настроек, который позволит использовать S3 для хранения загруженных носителей, если
+"AWS_STORAGE_BUCKET_NAME" определяется в среде оболочки. Все, что вам нужно сделать, это установить следующую среду
+переменные. Если вы используете Heroku, вам сначала нужно установить и настроить [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli затем выполните следующие команды для установки вышеупомянутых переменных среды:
 
-    heroku config:set AWS_STORAGE_BUCKET_NAME=changeme
-    heroku config:set AWS_ACCESS_KEY_ID=changeme
-    heroku config:set AWS_SECRET_ACCESS_KEY=changeme
+    Heroku config: set AWS_STORAGE_BUCKET_NAME=changeme
+    Heroku config: set AWS_ACCESS_KEY_ID=changeme
+    Heroku config: set AWS_SECRET_ACCESS_KEY=changeme
 
-Do not forget to replace the `changeme` with the actual values for your AWS account. If you're using a different hosting
-environment, set the same environment variables there using the method appropriate for your environment.
+Не забудьте заменить "changeme" на фактические значения для вашего аккаунта AWS. Если вы используете другой хостинг
+среда, установите там те же переменные среды, используя метод, соответствующий вашей среде.
 
-Once Heroku restarts your application or your Docker container is refreshed, you should have persistent media storage!
+После того, как Heroku перезапустит ваше приложение или ваш контейнер Docker будет обновлен, у вас должно быть постоянное хранилище мультимедиа!
 
-Running `./manage.py load_initial_data` will copy local images to S3, but if you set up S3 after you ran it the first
-time you might need to run it again.
+Бег". /manage.py load_initial_data ' будет копировать локальные изображения в S3, но если вы настроили S3 после запуска его первым
+время, которое вам может понадобиться, чтобы запустить его снова.
 
-# Next steps
+# Дальнейшие действия
 
-Hopefully after you've experimented with the demo you'll want to create your own site. To do that you'll want to run the `wagtail start` command in your environment of choice. You can find more information in the [getting started Wagtail CMS docs](http://wagtail.readthedocs.io/en/latest/getting_started/index.html).
+Надеюсь, после того, как вы поэкспериментируете с демо, вы захотите создать свой собственный сайт. Для этого вам нужно будет запустить команду "wagtail start" в выбранной вами среде. Вы можете найти дополнительную информацию в [начало работы Wagtail CMS docs](http://wagtail.readthedocs.io/en/latest/getting_started/index.html).
 
 
-# Contributing
+# Способствующий
 
-If you're a Python or Django developer, fork the repo and get stuck in! If you'd like to get involved you may find our [contributing guidelines](https://github.com/wagtail/portfolio/blob/master/contributing.md) a useful read.
+Если вы разработчик Python или Django, раскошелитесь на репо и застрянете! Если вы хотите принять участие, вы можете найти наши [руководящие принципы по содействию] (https://github.com/wagtail/portfolio/blob/master/contributing.md) полезное чтение.
 
-### Preparing this archive for distribution
+### Подготовка этого архива к распространению
 
-If you change content or images in this repo and need to prepare a new fixture file for export, do the following on a branch:
+Если вы изменили содержимое или изображения в этом РЕПО и вам нужно подготовить новый файл фикстуры для экспорта, выполните следующие действия в ветке:
 
-`./manage.py dumpdata --natural-foreign --indent 2 -e auth.permission -e contenttypes -e wagtailcore.GroupCollectionPermission -e wagtailimages.filter -e wagtailcore.pagerevision -e wagtailimages.rendition  -e sessions > portfolio/base/fixtures/portfolio.json`
+`./manage.py данные дампа --природно-иностранные отступ 2 -е авт.разрешение-e contenttypes-e wagtailcore.GroupCollectionPermission - e wagtailimages.фильтр-e wagtailcore.pagerevision-e wagtailimages.исполнение-e сессии > портфолио / база / светильники / портфолио.формат JSON`
 
-Please optimize any included images to 1200px wide with JPEG compression at 60%. Note that `media/images` is ignored in the repo by `.gitignore` but `media/original_images` is not. Wagtail's local image "renditions" are excluded in the fixture recipe above.
+Пожалуйста, оптимизируйте все включенные изображения до 1200px в ширину со сжатием JPEG на 60%. Обратите внимание, что` media/images `игнорируется в репо по'.gitignore", но "media / original_images" - нет. Локальные "представления" образа трясогузки исключены в приведенном выше рецепте приспособления.
 
-Make a pull request to https://github.com/wagtail/portfolio
+Сделайте запрос на вытягивание, чтобы https://github.com/wagtail/portfolio
 
-# Other notes
+# Другие заметки
 
-### Note on demo search
+### Примечание по демо-поиску
 
-Because we can't (easily) use ElasticSearch for this demo, we use wagtail's native DB search.
-However, native DB search can't search specific fields in our models on a generalized `Page` query.
-So for demo purposes ONLY, we hard-code the model names we want to search into `search.views`, which is
-not ideal. In production, use ElasticSearch and a simplified search query, per
+Поскольку мы не можем (легко) использовать ElasticSearch для этой демонстрации, мы используем собственный поиск по БД wagtail.
+Однако собственный поиск в БД не может выполнять поиск определенных полей в наших моделях по обобщенному запросу "страница".
+Поэтому только для демонстрационных целей мы жестко кодируем имена моделей, которые мы хотим искать в " search.взгляды`, который является
+не идеальный. В производственной среде используйте ElasticSearch и упрощенный поисковый запрос.
 [http://docs.wagtail.io/en/v1.13.1/topics/search/searching.html](http://docs.wagtail.io/en/v1.13.1/topics/search/searching.html).
 
-### Sending email from the contact form
+### Отправка электронной почты из контактной формы
 
-The following setting in `base.py` and `production.py` ensures that live email is not sent by the demo contact form.
+Следующая настройка в `base.py-и `production.py " гарантирует, что живая электронная почта не отправляется с помощью демонстрационной контактной формы.
 
-`EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'`
+'EMAIL_BACKEND =' Джанго.ядро.почта.базовая программа.приставка.EmailBackend"
 
-In production on your own site, you'll need to change this to:
+В производстве на вашем собственном сайте вам нужно будет изменить это на:
 
-`EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'`
+'EMAIL_BACKEND =' Джанго.ядро.почта.базовая программа.протокол SMTP.EmailBackend"
 
-and configure [SMTP settings](https://docs.djangoproject.com/en/1.10/topics/email/#smtp-backend) appropriate for your email provider.
+и настроить [настройки SMTP](https://docs.djangoproject.com/en/1.10/topics/email/#smtp-backend) подходит для вашего провайдера электронной почты.
 
-### Ownership of demo content
+### Владение демонстрационным контентом
 
-All content in the demo is public domain. Textual content in this project is either sourced from Wikipedia or is lorem ipsum. All images are from either Wikimedia Commons or other copyright-free sources.
+Все содержимое демо является общественным достоянием. Текстовый контент в этом проекте либо взят из Википедии, либо является lorem ipsum. Все изображения взяты либо из Викисклада, либо из других источников, не защищенных авторским правом.
